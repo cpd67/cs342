@@ -1,0 +1,41 @@
+Chapter 1
+
+1). Compare and contrast data, databases, database (management) systems and information systems.
+  Data - known facts that can be recorded and have implicit meaning, collection of related data with an implicit meaning is a database.
+  Databases - logically coherent collection of related data with some related meaning, represents some aspect of the real world (miniworld),
+              designed for a specific purpose, can be of any size and complexity.
+  Datbase management systems - computerized system that enables users to create and maintain a database, general-purpose software system that
+                               facilitates the processes of defining, constructing, manipulating, and sharing databases among various users and apps.
+                               Database definition or descriptive information is also stored by the DBMS in the form of a database catlog or dictionary. 
+  Information systems - consists of various computers, storage systems, application software, and databases, database is part of this larger
+                        undertaking within an organization. 
+
+2). Compare and contrast database systems with the following, using the main characteristics of the database approach in your discussion.
+  + data structures and algorithms
+  + traditional file systems
+  In the database approach, a single repository maintains data that is defined once and then accessed by various users repeatedly through queries, 
+  transactions, and application programs. Wherewas, in file processing, each user defines and implements the files needed for a specific software application
+  as part of programming the application. The database approach has the following characteristics: self-describing nature, insulation between 
+  programs and data (and data abstraction), support of multiple views of the data, and sharing of data and multiuser transaction processing. 
+  A DBMS provides users with a conceptual representation of data that doesn't include many of the details of how the data is stored or how the 
+  operations are implemented (which is counter to that of data structures and algorithms, which detail those two things). 
+
+3). Identify the stakeholders of database systems.
+  End users are an example of stakeholders. 
+
+Chapter 2
+
+1). Explain the significance of the categories of data models. Which type of model is displayed in Figure 2.1?
+  They describe the database structure.  
+  Schema is the type of model displayed in Figure 2.1.
+
+2). Explain the structure and significance of the three-schema architecture.
+  Seperates the user applications from the physical database. There are three levels: 1). Internal level - describes the physical storage structure
+  of the database. 2). Conceptual level - describes the structure of the whole database for a community of users. 3). External level - describes part of 
+  the database that a particular user group is interested in and hides the rest of the database from that user group. Significant because it helps
+  achieve and visualize three of the four important characteristics of the database approach (self-describing, insulation of programs and data, and 
+  support of multiple user views). 
+  
+3). Explain the tiers used in a typical web-based information system.
+  Client and server are two of the tiers (user machine and system that comtains both hardware and software that can provide services to the client), 
+  and an intermediate layer called the application server which runs application programs and stores business rules that are used to access data from the database server. 
