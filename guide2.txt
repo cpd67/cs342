@@ -1,6 +1,7 @@
 1. Chapter 5 (focus primarily on Sections 5.1–5.2)
 
 a. Who invented the relational data model? When and where did they do their work?
+  Ted Codd invented the relational data model. He worked at IBM in the 1970s. 
 
 b. Explain the following terms:
 i. relation
@@ -8,6 +9,7 @@ i. relation
 ii. attribute
 
 iii. domain
+  A domain is a set of atomic values ('atomic' means that each value in the domain is indivisible as far as the formal relational model is concerned). A common way of specifying a domain is to specify a data type from which the data values forming the domain are drawn (and it is also useful to specify a name for the domain to help in interpreting its values). 
 
 iv. n-tuple
 
