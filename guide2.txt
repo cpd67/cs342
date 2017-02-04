@@ -5,15 +5,25 @@ a. Who invented the relational data model? When and where did they do their work
 
 b. Explain the following terms:
 i. relation
-
+  A relation can be thought of as a table of values, where each row in the table represents a collection of related data values. 
+  A relation schema is used to describe a relation, where it is made up of a relation name and a list of attributes.
+  A relation of the relation schema is a set of n-tuples. 
+ 
 ii. attribute
+  An attribute is the name of a role played by some domain D in a relation schema.
+  It is also the column header for a column in a table of values (when a relation is thought of as a table of values). 
 
 iii. domain
-  A domain is a set of atomic values ('atomic' means that each value in the domain is indivisible as far as the formal relational model is concerned). A common way of specifying a domain is to specify a data type from which the data values forming the domain are drawn (and it is also useful to specify a name for the domain to help in interpreting its values). 
+  A domain is a set of atomic values ('atomic' means that each value in the domain is indivisible as far as the formal relational model is concerned). 
+  A common way of specifying a domain is to specify a data type from which the data values forming the domain are drawn (and it is also useful to specify a name for the domain to help in interpreting its values). 
+  It is given a name, data type, and format. 
 
 iv. n-tuple
+  n-tuple is an ordered list of n values where each value is an element of a domain of an attribute or is a special NULL value. 
 
 v. NULL value
+  Null values represent attributes whose values are unknown or do not exist for some individual tuple in a relation.
+  
 
 vi. primary, foreign, candidate and super keys
 
