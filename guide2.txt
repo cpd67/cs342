@@ -7,11 +7,12 @@ b. Explain the following terms:
 i. relation
   A relation can be thought of as a table of values, where each row in the table represents a collection of related data values. 
   A relation schema is used to describe a relation, where it is made up of a relation name and a list of attributes.
-  A relation of the relation schema is a set of n-tuples. 
- 
+  A relation of the relation schema is a set of n-tuples.
+  
 ii. attribute
-  An attribute is the name of a role played by some domain D in a relation schema.
-  It is also the column header for a column in a table of values (when a relation is thought of as a table of values). 
+  An attribute is the name of a role (interpretation) of some domain in a relation schema.
+  It is also the column header for a column in a table of values (when a relation is thought of as a table of values).
+  It is possible for several attributes to have the same domain. 
 
 iii. domain
   A domain is a set of atomic values ('atomic' means that each value in the domain is indivisible as far as the formal relational model is concerned). 
