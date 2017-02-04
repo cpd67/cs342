@@ -1,1 +1,30 @@
+1. Chapter 5 (focus primarily on Sections 5.1–5.2)
 
+a. Who invented the relational data model? When and where did they do their work?
+
+b. Explain the following terms:
+i. relation
+
+ii. attribute
+
+iii. domain
+
+iv. n-tuple
+
+v. NULL value
+
+vi. primary, foreign, candidate and super keys
+
+vii. referenced and referencing records
+
+c. Are tuples in a relation ordered? How about attribute values in a tuple? Explain why or why not.
+
+d. Can attributes have multiple values in a single n-tuple? Why or why not?
+
+2. Chapter 6 (focus primarily on Sections 6.1–6.2 & 6.4) — Make sure that you know how to:
+
+a. Create tables with specified constraints, including primary/foreign key, not-null, domain and value-check constraints.
+
+b. Use the DML commands: INSERT, DELETE and UPDATE.
+
+c. Distinguish the ON DELETE actions: SET NULL, CASCADE.
