@@ -64,5 +64,15 @@ d. Can attributes have multiple values in a single n-tuple? Why or why not?
 a. Create tables with specified constraints, including primary/foreign key, not-null, domain and value-check constraints.
 
 b. Use the DML commands: INSERT, DELETE and UPDATE.
+  INSERT INTO <table_name>
+  VALUES <values_listed_in_same_order_as_attributes>
+
+  DELETE FROM <table_name>
+  WHERE <condition_to_select_tuples>
+  (Without a WHERE clause, all tuples will be deleted from <table_name>)
+  
+  UPDATE <table_name>
+  SET <attributes_to_change>
+  WHERE <condition_to_select_tuples>
 
 c. Distinguish the ON DELETE actions: SET NULL, CASCADE.
