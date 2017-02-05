@@ -24,15 +24,40 @@ iv. n-tuple
 
 v. NULL value
   Null values represent attributes whose values are unknown or do not exist for some individual tuple in a relation.
-  
+  There can be several meanings for NULL, such as 'value unknown', 'value exists but is not available', or 'attribute does not apply
+  to this tuple' ('value undefined'). 
+  You can also devise different codes for different meanings of NULL, but incorporating different types of NULL values into
+  relational model operations is difficult.
+  It's best to avoid NULL values as much as possible during database design.
 
 vi. primary, foreign, candidate and super keys
+  Primary - designation given to a candidate key of a relation whose values are used to identify the tuples in the relation.
+  Foreign - a set of attributes in a relation schema is a foreign key if it meets the following requirements:
+            + The attributes have the same domain(s) as the primary key attributes.
+            + A value of the attributes in a tuple either occurs as a value of the attributes that are primary keys for some
+              other tuple, or is NULL. 
+  Candidate - when a relation schema has more than one key, each of the keys is called a candidate key.
+  Super - specifies a uniqueness constraint that no two distinct tuples in any state can hvave the same value for the superkey itself.
+          Every relation has a default: the set of all its attributes. Super keys can have redundant attributes. 
 
 vii. referenced and referencing records
+     Referenced - record which contains a tuple that has a value of the primary key attributes and that occurs as a value of 
+                    the foreign key attributes for some other tuple in a different record. 
+     Referencing - record which contains a tuple that has a value of the foreign key attributes and that occurs as a value of 
+                    the primary key attributes for some other tuple in a different record.
 
 c. Are tuples in a relation ordered? How about attribute values in a tuple? Explain why or why not.
-
+  Mathematically speaking, because a relation is defined as a set of tuples, 
+  and because elements of a set have no order among them, tuples in a relation are not ordered. 
+  The order of attribute values in a tuple depends on which definition of relation you are using. If you are using the first definition
+  according to the book, then the attributes are ordered in a tuple because an n-tuple in a relation is an ordered list of values.
+  However, if you use the alternative definition of a relation, where an n-tuple is a set of (<attribute>, <value>) pairs, then they
+  are not ordered because elements of a set have no order among them.
+  The book uses the first definition of relation, so the attribute values in a tuple are ordered. 
+  
 d. Can attributes have multiple values in a single n-tuple? Why or why not?
+  No. Because each value in a tuple is an atomic value, where it is not divisible into components within the framework of the basic
+  relational model. 
 
 2. Chapter 6 (focus primarily on Sections 6.1–6.2 & 6.4) — Make sure that you know how to:
 
