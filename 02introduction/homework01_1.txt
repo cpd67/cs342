@@ -1,0 +1,7 @@
+Exercise 1.14: Consider Figure 1.2.
+  a). If the name of the 'CS' (Computer Science) Department changes to 'CSSE' (Computer Science and Software Engineering) Department
+      and the corresponding prefix for the course number also changes, identify the columns in the database that would need to be 
+      updated.
+      
+  b). Can you restructure the columns in the COURSE, SECTION, and PREREQUISITE tables so that only one column will need to be updated?
+   
