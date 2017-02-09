@@ -1,3 +1,39 @@
-Exercise 2.13: Choose a database application with which you are familiar. Design a schema and show a sample database for that 
-                application, using the notation of Figures 1.2 and 2.1. What types of additional information and constraints 
-                would you like to represent in the schema? Think of several users of your database, and design a view for each. 
+Exercise 2.13: 
+
+Choose a database application with which you are familiar. Design a schema and show a sample database for that application, 
+using the notation of Figures 1.2 and 2.1. What types of additional information and constraints would you like to represent 
+in the schema? Think of several users of your database, and design a view for each. 
+
+  ANSWER:
+  
+  College(COLLEGE_ID, collegeName, schoolYear)
+  Course(COURSE_ID, sectionID, creditHours)
+  Section(SECTION_ID, courseID, startTime, endTime, profFirstName, profLastName, meetingDays)
+  Student(LOGIN_ID, firstName, lastName, email, password) 
+  Schedule(SCHEDULE_ID, scheduleName, studentID)
+  
+  NOTES: 
+  + The 'schoolYear' field in the College table is the year that you are attending a college (e.g. Summer 2017, Fall 2018...)
+  + The 'password' value would have to be encrypted for security reasons.
+
+  Additional information that I would like to represent is the relation between courses, such as when a course has a lab (a 
+  corequisite). Also, I would like to represent the relation between the schoolYear field in a College record and a Course record (as a 
+  course may only be offered during a specific year, like certain electives). Also, where the room number is for each Course record (the 
+  location where the actual course is taught). 
+  Constraints would be that the studentID for a Schedule record cannot be NULL (if a schedule is saved, it must be associated with a 
+  student's name), and the schoolYear cannot be NULL for a College record (a college has to start at a specified year in order to select 
+  courses that are availible in that year). Also, a password would have to be a certain number of characters (to add security), and 
+  start and end times would be represented in the form of XX:XXAM or XX:XXPM (and there would have to be a range of valid times that a 
+  course starts and ends; e.g. a course shouldn't start at 01:00AM, or at 11:00PM and shouldn't end at a time when another course 
+  starts). A similar constraint is for the 'meetingDays' field of the Section table; they should be of the form "M/W/F", "M/T/Th/F", 
+  "T/Th", or singular days (as in classes that meet only once a week, for example) and shouldn't include Saturday or Sunday. 
+  
+  Views: 
+  Students - the current view that SlatePermutate has (where a student can input the 'Class ID' and see the information for that
+              specific course). 
+  Administrator - a view where someone with the proper credentials can edit the application, in case a course is no longer availible or 
+                  offered or the times for it changed (start or end). (You would have to make sure that someone has the proper 
+                  credentials in order to make changes to the database; a student shouldn't be able to make changes, for example, to a 
+                  Course record).
+                  
+  
