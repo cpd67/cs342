@@ -15,5 +15,6 @@ a). If the name of the 'CS' (Computer Science) Department changes to 'CSSE' (Com
              tables, as well as from the Prerequisite_column in the PREREQUISITE table, then the only column that would need to be changed
              is the Department column in the COURSE table. (You would have to use the prefix in that column in order to distinguish two
              courses with the same Course_number value, should that ever occur). 
- (Follow-up question from homework): Yes, you would do the same restructuring as in my answer to 1.14b in order to change the values
-                                       of one field. 
+ (Follow-up question from homework): Yes, you would need a different table for the Department and a foreign key to a Department table ID
+                                     in the Course table (so that way, you only have to change the value of the Department table, which
+                                     would be the prefix field value). 
