@@ -1,0 +1,8 @@
+Vision statement for CS-342 project
+-----------------------------------
+
+I was thinking of modeling a restaurant, where the database would store information about food and beverages and the relations between them.
+There would be appetizers, main dishes, and desserts as well as a variety of beverages (soda, alcholic beverages, shakes, smoothies, etc...).
+Potential stakeholders include customers who would like to see a menu of the different dishes that the restaurant offers, and management to determine
+stock quantities of ingriedents. The corresponding views would be different for the two sets of stakeholders, as one would be a menu and the other 
+would be an inventory list. 
