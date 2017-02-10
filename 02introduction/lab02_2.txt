@@ -1,0 +1,14 @@
+Exercise 2.2:
+
+a). Yes, you could. Here is the constraint that I would specify:
+
+	ALTER TABLE Movie
+		ADD CONSTRAINT checkScoreAndVotes;
+		CHECK (score IS NULL or votes > 1000);			
+
+b). Yes. If the constraints change frequently, then it would be good to have them in a separate place 
+	than the table definition it modifies so that you wouldn't have to keep making changes to your definition
+	whenever your constraints change. 
+	Keeping the constraints inside of the definition means that you have to go inside of the definition
+	and modify it everywhere that it is used, which could lead to bugs and other problems if done incorrectly.
+	In sum, it would be good for maintenance of the database. 
