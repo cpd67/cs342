@@ -3,8 +3,35 @@
 a). Compare and contrast the database and the software design processes. Are agile modeling practices applicable to database design as well?
 
 b). Explain the following terms: entities, relationships (including cardinality and participation constraints), attributes (simple, composite, multi-valued and derived).
-
+  + Entities: basic concept in the ER (Entity-Relationship) model, which is a thing or object in the real world with an independent
+              existence (examples incldue a car, house...), or it may be an object with a conceptual existence (examples include 
+              a company, job...). Each entity has attributes and will have a particular entity will have a value for each of 
+              its attributes.  
+  
+  + Relationships: 
+  
+  + Attributes: particular properties that describe entities. The attribute values that describe each entity become a major part of the
+                data stored in the database. There are many different types of attributes: simple and composite, single-valued and 
+                multi-valued, and stored and derived.
+                - Composite attributes: attributes that can be divided into smaller subparts, which represent more basic attributes 
+                  with independent meanings. They can form a hierarchy, whereby the value of a composite attribute is the 
+                  concatenation of the values of its component simple attributes. Useful to model situations in which a user 
+                  sometimes refers to the composite attribute as a unit but at other times refers specifically to its components.
+                  If the composite attribute is referenced only as a whole, there is no need to subdivide it into its 
+                  constituient simple attributes.
+                - Simple attributes: attributes that cannot be divided into smaller subparts (also known as atomic attributes).
+                  They tend to form composite attributes, whereby their concatenation forms the value for the composite attribute.
+                - Single-valued: attributes which have a single value for a particular entity. 
+                - Multi-valued: attributes which have a set of values for the same entity. Different entities can have different numbers
+                  of values for the multi-valued attribute. A multi-valued attribute may have lower and upper bounds to constrain 
+                  the number of values allowed for each individual entity. 
+                - Stored and Derived: attributes which have values that are related and whereby one can be derivable from the other. 
+                  The derived attribute is the one that is derivable from another attribute, which is the stored attribute. 
+                  Some attribute values can be derived from related entities. 
+                
 c). Explain weak entities and identifying relationships.
+  + Weak entities: 
+  + Identifying relationships:
 
 d). Model a person-household database (from class 2) using an ERD.
 
