@@ -1,1 +1,17 @@
+1. Read Chapter 3.
 
+a). Compare and contrast the database and the software design processes. Are agile modeling practices applicable to database design as well?
+
+b). Explain the following terms: entities, relationships (including cardinality and participation constraints), attributes (simple, composite, multi-valued and derived).
+
+c). Explain weak entities and identifying relationships.
+
+d). Model a person-household database (from class 2) using an ERD.
+
+e). Skim the material in Section 3.8 on UML diagrams; we won’t use it here but we have addressed it in CS 262 and will review it in unit 11.
+
+2). Read Chapter 9.
+
+a). Map the ERD model from above to a relational database model.
+
+b). Explain how to map from a UML model to a relational database model. We will address this issue more carefully in a later unit (on object-relational mapping).
