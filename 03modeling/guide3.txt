@@ -31,7 +31,7 @@ b). Explain the following terms: entities, relationships (including cardinality 
                 
 c). Explain weak entities and identifying relationships.
   + Weak entities: 
-  + Identifying relationships:
+  + Indentifying relationships:
 
 d). Model a person-household database (from class 2) using an ERD.
 
