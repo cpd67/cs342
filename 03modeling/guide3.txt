@@ -1,6 +1,11 @@
 1. Read Chapter 3.
 
 a). Compare and contrast the database and the software design processes. Are agile modeling practices applicable to database design as well?
+	They are similar in terms of the requirements collection and analysis phases. Both collect and obtain information regarding dependencies
+	and analyze a problem, though one does so for a database and the other for a software application. The requirements for both also get 
+	separated into functional and data requirements. However, the database design looks at both separately; functional requirements undergo
+	functional analysis and data requirements undergo the conceptual design phase. Agile modeling practices could be applicable to database 
+	design, as long as the database can be changed incrementally and the design is flexible to allow for that change. 
 
 b). Explain the following terms: entities, relationships (including cardinality and participation constraints), attributes (simple, composite, multi-valued and derived).
   + Entities: basic concept in the ER (Entity-Relationship) model, which is a thing or object in the real world with an independent
@@ -59,3 +64,5 @@ a). Map the ERD model from above to a relational database model.
 	(See diagram in notes).
 	
 b). Explain how to map from a UML model to a relational database model. We will address this issue more carefully in a later unit (on object-relational mapping).
+	Classes are entities, and the associations are relationship types. Given this, you could map the classes and associations as you would normally for an ERD-Relational 
+	mapping. 
