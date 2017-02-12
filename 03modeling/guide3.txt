@@ -4,11 +4,18 @@ a). Compare and contrast the database and the software design processes. Are agi
 
 b). Explain the following terms: entities, relationships (including cardinality and participation constraints), attributes (simple, composite, multi-valued and derived).
   + Entities: basic concept in the ER (Entity-Relationship) model, which is a thing or object in the real world with an independent
-              existence (examples incldue a car, house...), or it may be an object with a conceptual existence (examples include 
+              existence (examples include a car, house...), or it may be an object with a conceptual existence (examples include 
               a company, job...). Each entity has attributes and will have a particular entity will have a value for each of 
               its attributes.  
   
-  + Relationships: 
+  + Relationships: there are several implicit relationships amongst various entity types, whereby an attribute of one entity type 
+	refers to another entity type. In the ER model, these are relationships. In the initial design of entity types, relationships 
+	are typically captured in the form of attributes (but get converted into relationships between entity types as the design is 
+	furthe refined). The cardinality ratio for a binary relationship (whereby two entities are participating in a relationship) 
+	specifies the max number of relationship instances that an entity can participate in. The possible cardinality ratios for 
+	binary relationships are 1:1, 1:N, N:1, and M:N. The participation constraint specifies whether the existence of an entity depends
+	on it sbeing related to another entity via the relationship type. It specifies the min number of relationship instances that 
+	each entity can participate in and is sometimes called the minimum cardinality constraint.
   
   + Attributes: particular properties that describe entities. The attribute values that describe each entity become a major part of the
                 data stored in the database. There are many different types of attributes: simple and composite, single-valued and 
@@ -30,15 +37,25 @@ b). Explain the following terms: entities, relationships (including cardinality 
                   Some attribute values can be derived from related entities. 
                 
 c). Explain weak entities and identifying relationships.
-  + Weak entities: 
-  + Indentifying relationships:
+  + Weak entities: entities that do not have key attributes of their own. Entities belonging to this type are identified by being related 
+	to specific entities from another entity type in combination with one of their attribute values. They always have a total participation
+	constraint (or existence dependency) with respect to their identifying relationship because a weak entity cannot be identified without 
+	an owner entity. They normally have partial keys, which are attributes that can uniquely identify weak entities that are related to the
+	same owner entity. In an ER diagram, weak entities and their identifying relationships are distinguished by surrounding their boxes and 
+	diamonds with double lines. Partial keys are underlined with a dashed or dotted line. Weak entities can sometimes be represented as complex
+	attributes. In general, any number of levels of weak entities can be defined. They may also have more than one identifying entity type
+	and an identifying relationship of degree higher than 2 (which means that more than 2 entities participate in the relationship).
+	
+  + Identifying relationships: relationship type that relates a weak entity type to its owner (or identifying entity type). 
 
 d). Model a person-household database (from class 2) using an ERD.
+	(See diagram that I drew in my notebook).
 
 e). Skim the material in Section 3.8 on UML diagrams; we won’t use it here but we have addressed it in CS 262 and will review it in unit 11.
 
 2). Read Chapter 9.
 
 a). Map the ERD model from above to a relational database model.
-
+	(See diagram in notes).
+	
 b). Explain how to map from a UML model to a relational database model. We will address this issue more carefully in a later unit (on object-relational mapping).
