@@ -13,12 +13,12 @@
 -- + checking the quantity field of a record in the ORDER_ITEM table (we should not have order items with negative quantities).
 
 --First, drop any implemented tables before creating them.
-DROP TABLE CUSTOMER;
-DROP TABLE ORDER;
-DROP TABLE ITEM;
 DROP TABLE ORDER_ITEM;
-DROP TABLE WAREHOUSE;
+DROP TABLE ITEMS;
 DROP TABLE SHIPMENT;
+DROP TABLE ORDERS;
+DROP TABLE WAREHOUSE;
+DROP TABLE CUSTOMER;
 
 -- Schema implementation
 CREATE TABLE CUSTOMER (
@@ -31,7 +31,7 @@ CREATE TABLE CUSTOMER (
 	PRIMARY KEY(customerID)
 	);
 	
-CREATE TABLE ORDER (
+CREATE TABLE ORDERS (
 	orderID integer,
 	orderDate date,
 	customerNumber integer,
@@ -43,7 +43,7 @@ CREATE TABLE ORDER (
 	CHECK (orderAmount >= 0.0)
 	);
 
-CREATE TABLE ITEM (
+CREATE TABLE ITEMS (
 	itemID integer,	
 	unitPrice float,
 	itemName varchar(40),
@@ -59,7 +59,7 @@ CREATE TABLE ORDER_ITEM (
 	-- If an item no longer exists in a database, set the ID to null
 	-- because at that point a record in the ORDER_ITEM is no longer 
 	-- storing a valid value which is an ID of a record in the ITEM table. 
-	FOREIGN KEY(itemNumber) REFERENCES ITEM(itemID) ON DELETE SET NULL,
+	FOREIGN KEY(itemNumber) REFERENCES ITEMS(itemID) ON DELETE SET NULL,
 	CHECK (quantity >= 0)
 	);
 
@@ -78,7 +78,7 @@ CREATE TABLE SHIPMENT (
 	-- If you do not know the order number for a shipment, you don't know what to ship and so 
 	-- should also delete any records that require that order number because you do not know what exactly
 	-- to ship, which could cause problems.
-	FOREIGN KEY(orderNumber) REFERENCES ORDER(orderID) ON DELETE CASCADE,
+	FOREIGN KEY(orderNumber) REFERENCES ORDERS(orderID) ON DELETE CASCADE,
 	-- If you don't know the warehouse, you don't know where to ship the order to and so 
 	-- shouldn't have records that have references to that warehouse that doesn't exist anymore
 	-- because you wouldn't know exactly where to ship an order to.
@@ -87,23 +87,23 @@ CREATE TABLE SHIPMENT (
 
 -- Create 3-5 sample records
 -- CUSTOMER records
-INSERT INTO CUSTOMER VALUES (1, "Billy", "Bob", "Grand Rapids");
-INSERT INTO CUSTOMER VALUES (2, "Joe", "Haskins", "San Diego");
-INSERT INTO CUSTOMER VALUES (3, "Greg", "Johnson", "Lebanon");
+INSERT INTO CUSTOMER VALUES (1, 'Billy', 'Bob', 'Grand Rapids');
+INSERT INTO CUSTOMER VALUES (2, 'Joe', 'Haskins', 'San Diego');
+INSERT INTO CUSTOMER VALUES (3, 'Greg', 'Johnson', 'Lebanon');
 
 -- ORDER records
-INSERT INTO ORDER VALUES (1, '2011-03-11', 1, 30.0);
-INSERT INTO ORDER VALUES (2, '2012-01-21', 2, 50.0);
-INSERT INTO ORDER VALUES (3, '2013-04-01', 3, 6.00);
-INSERT INTO ORDER VALUES (4, '2012-06-11', 2, 100.0);
-INSERT INTO ORDER VALUES (5, '2015-08-28', 1, 40.0);
+INSERT INTO ORDERS VALUES (1, DATE '2011-03-11', 1, 30.0);
+INSERT INTO ORDERS VALUES (2, DATE '2012-01-21', 2, 50.0);
+INSERT INTO ORDERS VALUES (3, DATE '2013-04-01', 3, 6.00);
+INSERT INTO ORDERS VALUES (4, DATE '2012-06-11', 2, 100.0);
+INSERT INTO ORDERS VALUES (5, DATE '2015-08-28', 1, 40.0);
 
 -- ITEM records
-INSERT INTO ITEM VALUES (1, 30.0, "Boots");
-INSERT INTO ITEM VALUES (2, 50.0, "Puppy");
-INSERT INTO ITEM VALUES (3, 6.00, "Band-aids");
-INSERT INTO ITEM VALUES (4, 100.0, "Golden Eggs");
-INSERT INTO ITEM VALUES (5, 40.0, "Hat");
+INSERT INTO ITEMS VALUES (1, 30.0, 'Boots');
+INSERT INTO ITEMS VALUES (2, 50.0, 'Puppy');
+INSERT INTO ITEMS VALUES (3, 6.00, 'Band-aids');
+INSERT INTO ITEMS VALUES (4, 100.0, 'Golden Eggs');
+INSERT INTO ITEMS VALUES (5, 40.0, 'Hat');
 
 -- ORDER_ITEM records
 INSERT INTO ORDER_ITEM VALUES (1, 1, 3);
@@ -113,18 +113,17 @@ INSERT INTO ORDER_ITEM VALUES (4, 4, 100);
 INSERT INTO ORDER_ITEM VALUES (5, 5, 1);
 
 -- WAREHOUSE records
-INSERT INTO WAREHOUSE VALUES (1, "Grand Rapids");
-INSERT INTO WAREHOUSE VALUES (2, "San Diego");
-INSERT INTO WAREHOUSE VALUES (3, "Lebanon");
+INSERT INTO WAREHOUSE VALUES (1, 'Grand Rapids');
+INSERT INTO WAREHOUSE VALUES (2, 'San Diego');
+INSERT INTO WAREHOUSE VALUES (3, 'Lebanon');
 
 -- SHIPMENT records
-INSERT INTO SHIPMENT VALUES (1, 1, 1, '2011-03-09');
-INSERT INTO SHIPMENT VALUES (2, 2, 2, '2012-01-19');
-INSERT INTO SHIPMENT VALUES (3, 3, 3, '2013-03-29');
-INSERT INTO SHIPMENT VALUES (4, 4, 2, '2012-06-08');
-INSERT INTO SHIPMENT VALUES (5, 5, 1, '2015-08-25');
+INSERT INTO SHIPMENT VALUES (1, 1, 1, DATE '2011-03-09');
+INSERT INTO SHIPMENT VALUES (2, 2, 2, DATE '2012-01-19');
+INSERT INTO SHIPMENT VALUES (3, 3, 3, DATE '2013-03-29');
+INSERT INTO SHIPMENT VALUES (4, 4, 2, DATE '2012-06-08');
+INSERT INTO SHIPMENT VALUES (5, 5, 1, DATE '2015-08-25');
 
 -- Exercise 5.20.a
 
 -- Exercise 5.20.c
-
