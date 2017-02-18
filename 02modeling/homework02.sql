@@ -90,12 +90,14 @@ CREATE TABLE SHIPMENT (
 INSERT INTO CUSTOMER VALUES (1, 'Billy', 'Bob', 'Grand Rapids');
 INSERT INTO CUSTOMER VALUES (2, 'Joe', 'Haskins', 'San Diego');
 INSERT INTO CUSTOMER VALUES (3, 'Greg', 'Johnson', 'Lebanon');
+INSERT INTO CUSTOMER VALUES (4, 'Harry', 'Osborn', 'Grand Haven');
+INSERT INTO CUSTOMER VALUES (5, 'Jerry', 'Eaton', 'Ada');
 
 -- ORDER records
 INSERT INTO ORDERS VALUES (1, DATE '2011-03-11', 1, 30.0);
 INSERT INTO ORDERS VALUES (2, DATE '2012-01-21', 2, 50.0);
 INSERT INTO ORDERS VALUES (3, DATE '2013-04-01', 3, 6.00);
-INSERT INTO ORDERS VALUES (4, DATE '2012-06-11', 2, 100.0);
+INSERT INTO ORDERS VALUES (4, DATE '2012-06-11', 2, 40.0);
 INSERT INTO ORDERS VALUES (5, DATE '2015-08-28', 1, 40.0);
 
 -- ITEM records
@@ -109,7 +111,7 @@ INSERT INTO ITEMS VALUES (5, 40.0, 'Hat');
 INSERT INTO ORDER_ITEM VALUES (1, 1, 3);
 INSERT INTO ORDER_ITEM VALUES (2, 2, 1);
 INSERT INTO ORDER_ITEM VALUES (3, 3, 10);
-INSERT INTO ORDER_ITEM VALUES (4, 4, 100);
+INSERT INTO ORDER_ITEM VALUES (4, 5, 1);
 INSERT INTO ORDER_ITEM VALUES (5, 5, 1);
 
 -- WAREHOUSE records
@@ -127,3 +129,22 @@ INSERT INTO SHIPMENT VALUES (5, 5, 1, DATE '2015-08-25');
 -- Exercise 5.20.a
 
 -- Exercise 5.20.c
+
+-- 3.a.
+SELECT orderDate, orderAmount FROM ORDERS, CUSTOMER 
+	WHERE customerNumber=customerID AND (customerFirstName || ' ' || customerLastName)='Billy Bob' ORDER BY orderDate;
+
+-- 3.b.
+--Help in using the DISTINCT claus was obtained from:
+--http://stackoverflow.com/questions/12239169/how-to-select-records-without-duplicate-on-just-one-field-in-sql
+SELECT DISTINCT customerID FROM CUSTOMER, ORDERS WHERE customerID=customerNumber;
+SELECT customerID FROM CUSTOMER;
+SELECT customerNumber FROM ORDERS;
+
+-- 3.c.
+SELECT customerID, customerFirstName, customerLastName FROM CUSTOMER, ORDERS, ITEMS, ORDER_ITEM 
+	WHERE (customerID=ORDERS.customerNumber) AND (ORDERS.orderID=ORDER_ITEM.orderID) AND (ORDER_ITEM.itemNumber=ITEMS.itemID) AND (ITEMS.itemName='Hat');
+
+-- Lab Exercise 2.3
+
+-- Lab Exercise 2.4
