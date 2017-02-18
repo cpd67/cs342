@@ -38,7 +38,7 @@ b. Explain the terms functional dependency (for Monday, see Section 14.2) and mu
 			
 			---------------------
 			|  A |  B |  C |  D |
-			|--------------------
+			---------------------
 			| a1 | b1 | c1 | d1 |
 			| a1 | b2 | c2 | d2 | 
 			| a2 | b2 | c2 | d3 | 
@@ -50,6 +50,26 @@ b. Explain the terms functional dependency (for Monday, see Section 14.2) and mu
 			Wherever b3 shows up, c4 shows up. Therefore, B -> C may be an FD. 
 			
 	Multi-valued dependency:
+	
+		+ Formal definition: A multivalued dependency X ->-> Y specified on relation schema R, where X and Y are both subsets of R, 
+							specifies the following constraint on any relation state r of R: If two tuples t1 and t2 exist in r
+							such that t1[X] = t2[X], then two tuples t3 and t4 should also exist in r with the following properties, 
+							where Z denotes (R - (X U Y)):
+							- t3[X] = t4[X] = t1[X] = t2[X]
+							- t3[Y] = t1[Y] and t4[Y] = t2[Y]
+							- t3[Z] = t2[Z] and t4[Z] = t1[Z]. 
+							
+		+ Example (from book, pg. 492): 
+		
+		EMP_PROJECTS
+		-----------------
+		| ENAME | PNAME |
+		----------------- 
+		| Smith |   X   |
+		| Smith |   Y   |
+		-----------------
+			
+		ENAME ->-> PNAME is there because it is a trivial multivalued dependency. 
 
 c. Review the formal definitions of these terms: superkey; key (see Section 14.3.3).
 	
@@ -63,8 +83,39 @@ c. Review the formal definitions of these terms: superkey; key (see Section 14.3
 d. Explain BCNF (for Monday, see Section 14.5) and 4NF (for Wednesday, see Section 14.6) by giving an example relation and proving whether its schema conforms (or fails to conform) to the definitions of each normal form.
 	
 	+ BCNF:
+		+ Formal definition: A relation schema R is in BCNF (Boyce-Codd Normal Form) if, whenever a nontrivial functional dependency X -> A 
+							holds in R, then X is a superkey of R. 
+							
+		+ Example (taken from the book, pg. 488): 
+		
+			R(A, B, C)
+		
+			F.D. 1: {A, B} -> C
+			F.D. 2: C -> B
+			
+			In the example, this relation is NOT in BCNF because of the functional dependency C -> B.
+			The reason is because C is not a superkey but B is a prime attribute, which fails to conform to
+			the formal definition of BCNF (which disallows prime attributes).
 	
 	+ 4NF:
+		+ Formal definition: a relation schema R is in 4NF with respect to a set of dependencies F (that includes functional 
+								dependencies and multivalued dependencies) if, for every nontrivial multivalued dependency 
+								X ->-> Y in F+, X is a superkey for R.
+								
+		+ Example (from book, pg. 492):
+			EMP
+			-------------------------
+			| ENAME | PNAME | DNAME |
+			-------------------------
+			| Smith |   X   |  John |  
+			| Smith |   Y   |  Anna |
+			| Smith |   X   |  Anna | 
+			| Smith |   Y   |  John | 
+			-------------------------
+
+			EMP is not in 4NF because in the nontrivial multivalued dependencies ENAME ->-> PNAME and ENAME ->-> DNAME, 
+			and ENAME is not a superkey of EMP. 
+			
 
 e. Explain when one would one want to normalize a relational schema and when one might want to de-normalize one.
 
@@ -79,6 +130,13 @@ e. Explain when one would one want to normalize a relational schema and when one
 
 2. Review Section 15.1.1 well enough to be able to define Armstrong’s axioms (IR1–3) and closures.
 
-	Armstrong’s axioms:
+	Armstrong’s axioms: inference rules (which infer new dependencies from a given set of dependencies) for functional dependencies.
+						
+						They are: 
+						IR1 (reflexive rule): If X is a superset of Y, then X -> Y. 
+						IR2 (augmentation rule): {X -> Y} |=XZ -> YZ.
+						IR3 (transitive rule): {X -> Y, Y-> Z} |=X -> Z.
 	
-	Closures:
+	Closures: the set of all dependencies that include a set of functional dependencies that are specified on a relation schema 
+				as well as dependencies that can be inferred from the set of functional dependencies is called the closure of that 
+				set of functional dependencies. 
