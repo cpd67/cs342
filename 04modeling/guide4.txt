@@ -24,15 +24,41 @@ a. Explain the four informal guidelines discussed in Section 14.1.
 	
 b. Explain the terms functional dependency (for Monday, see Section 14.2) and multi-valued dependency (for Wednesday, see Section 14.6) by giving an example of each and showing how it satisfies the term’s formal definition.
 	
-	Functional dependency:
-	
+	Functional dependency: 
+		+ Formal definition: A functional dependency, denoted by X -> Y, between two sets of attributes X and Y that are subsets of R specifies a constraint 
+		  on the possible tuples that can form a relation state r of R. The constraint is that, for any two tuples t1 and t2 in r that have t1[X] = t2[X], 
+		  they must also have t1[Y] = t2[Y]. 
+		  
+		  This means that the values of the Y component of a tuple in r depend on, or are determined by, the values of the X component. 
+		  Alternatively, the values of the X component of a tuple uniquely (functionally) determine the values of the Y component.
+			
+		+ Example (taken from the book, pg. 474): 
+			
+			Extension of relation R(A, B, C, D):
+			
+			---------------------
+			|  A |  B |  C |  D |
+			|--------------------
+			| a1 | b1 | c1 | d1 |
+			| a1 | b2 | c2 | d2 | 
+			| a2 | b2 | c2 | d3 | 
+			| a3 | b3 | c4 | d3 | 
+			---------------------
+		
+			B -> C may hold as an FD because it seems as though the values of C depend on the values of B. 
+			Wherever b1 shows up in a tuple of the extension, c1 shows up. Wherever b2 shows up, c2 shows up. 
+			Wherever b3 shows up, c4 shows up. Therefore, B -> C may be an FD. 
+			
 	Multi-valued dependency:
 
 c. Review the formal definitions of these terms: superkey; key (see Section 14.3.3).
 	
-	Superkey:
+	Superkey: a superkey of a relation schema R = {A1, A2, ... , An} is a set of attributes S which is a set of R with the property that no two tuples t1 and t2 
+				in any legal relation state r of R will have t1[S] = t2[S]. 
 	
-	Key:
+	Key: a key K is a superkey with the additional property that removal of any attribute from K will cause K not to be a superkey anymore. 
+			The difference between a key and a superkey is that a key has to be minimal, meaning: if we have a key K = {A1, A2, ... , Ak}
+			of R, then K - {Ai} is not a key of R for any Ai, 1 <= i <= k. 
 
 d. Explain BCNF (for Monday, see Section 14.5) and 4NF (for Wednesday, see Section 14.6) by giving an example relation and proving whether its schema conforms (or fails to conform) to the definitions of each normal form.
 	
@@ -42,9 +68,14 @@ d. Explain BCNF (for Monday, see Section 14.5) and 4NF (for Wednesday, see Secti
 
 e. Explain when one would one want to normalize a relational schema and when one might want to de-normalize one.
 
-	Normalize: 
+	Normalize: when you want to assure the quality of a database design, or of a legacy design that was obtained from a previous company. 
+				This ensures that the designs are sustainable over long periods of time (should you want that to occur).
+				Also, to minimize redundance and to minimize insertion, deletion and modification anomalies in your database design
+				so that your design is of a higher quality.
 	
-	De-normalize:
+	De-normalize: when performance becomes an issue and when corresponding penalties of dealing with anomalies at 
+					lower forms can be incurred. (It's a trade-off between quality and performance; lower quality designs 
+					might have increased performance, but there will be anomalies associated with them). 
 
 2. Review Section 15.1.1 well enough to be able to define Armstrong’s axioms (IR1–3) and closures.
 
