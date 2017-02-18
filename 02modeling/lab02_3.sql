@@ -5,7 +5,7 @@
 -- kvlinden
 -- Edited by Chris Dilley (cpd5) for Homework 2. 
 
--- Exercise 2.3.
+-- Exercise 2.3:
 
 -- The following website was helpful in coming up with a solution: http://softwareengineering.stackexchange.com/questions/182094/how-should-i-represent-an-enumerated-type-in-a-relational-database
 -- Yes, you can modify the movies database to support the enumerated status type using the relational model
