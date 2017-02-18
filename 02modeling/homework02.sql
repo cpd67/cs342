@@ -1,3 +1,7 @@
+
+-- Homework 02 solutions for CS-342.
+-- Chris Dilley (cpd5).
+
 -- Exercise 5.14:
 
 -- The foreign keys are specified in the schema implementation below. They are: 
@@ -126,25 +130,53 @@ INSERT INTO SHIPMENT VALUES (3, 3, 3, DATE '2013-03-29');
 INSERT INTO SHIPMENT VALUES (4, 4, 2, DATE '2012-06-08');
 INSERT INTO SHIPMENT VALUES (5, 5, 1, DATE '2015-08-25');
 
--- Exercise 5.20.a
+-- Exercise 5.20.a:
 
--- Exercise 5.20.c
+-- I cannot think of any natural choices of keys that could be used to identify the 
+-- student record, apart from having a composite primary key that includes two or more
+-- pieces of the student's information (address and home phone number, for example). 
+-- However, even this is insufficient to uniquely identify a student record.
+-- Siblings who both attended the university at the same time would have the same address
+-- and home phone number, thereby circumventing the uniqueness constraint for primary keys 
+-- as both records for those siblings would have the same composite primary key. 
+-- You could make ALL pieces of information for a student the primary key, 
+-- but it would just be easier to use a surrogate key to identify each student 
+-- instead of how many pieces of information for each student. 
+-- Therefore, surrogate keys are an easy way to uniquely identify records 
+-- without having to have composite primary keys for each student record. 
 
--- 3.a.
+-- Exercise 5.20.c:
+
+-- Advantages: Finer grained control over keys (you can ensure that the uniqueness constraint 
+-- 				is enforced much more easily, as you only have to assign one number to each 
+-- 				record), you only have to keep track of one piece of information for 
+-- 				the primary key (instead of having a composite primary key in place of 
+-- 				using a number).
+-- Disadvantages: If you forget which generated keys have been assigned to records 
+-- 					then you could run the risk of accidentally reassigning an already 
+-- 					assigned key (easier to lose track of which keys are unique),
+-- 					they are artificial and so do not provide an accurate, natural, and unique way 
+-- 					to identify the 'miniworld' that the database is supposed to be representing 
+--					(i.e. some aspect of the real world).
+--
+
+-- Follow-up question for Exercise 5.20:
+-- I would recommend that CIT continue using surrogate student ID numbers. The reason is 
+-- because it is a much easier way to uniquely identify a student when compared to 
+-- having to figure out a natural key (which may end up being a composite primary key 
+-- that may cause difficulty in enforcing the uniqueness constraint).
+
+-- 3.a:
 SELECT orderDate, orderAmount FROM ORDERS, CUSTOMER 
 	WHERE customerNumber=customerID AND (customerFirstName || ' ' || customerLastName)='Billy Bob' ORDER BY orderDate;
 
--- 3.b.
+-- 3.b:
 --Help in using the DISTINCT claus was obtained from:
 --http://stackoverflow.com/questions/12239169/how-to-select-records-without-duplicate-on-just-one-field-in-sql
 SELECT DISTINCT customerID FROM CUSTOMER, ORDERS WHERE customerID=customerNumber;
 SELECT customerID FROM CUSTOMER;
 SELECT customerNumber FROM ORDERS;
 
--- 3.c.
+-- 3.c:
 SELECT customerID, customerFirstName, customerLastName FROM CUSTOMER, ORDERS, ITEMS, ORDER_ITEM 
 	WHERE (customerID=ORDERS.customerNumber) AND (ORDERS.orderID=ORDER_ITEM.orderID) AND (ORDER_ITEM.itemNumber=ITEMS.itemID) AND (ITEMS.itemName='Hat');
-
--- Lab Exercise 2.3
-
--- Lab Exercise 2.4
