@@ -2,6 +2,26 @@
 
 a. Explain the four informal guidelines discussed in Section 14.1.
 
+	+ Guideline 1: design a relation schema so that it is easy to explain its meaning. Don't conflagarate attributes from multiple entity types 
+					and relationship types into a single relation. A relation schema should correspond to one entity type or one relationship type.
+					If the relation corresponds to a mixture of multiple entities and relationships, its semantics (its meaning resulting 
+					from the interpretation of its attribute values in a tuple) may suffer, making it difficult to explain the relation easily. 
+	
+	+ Guideline 2: design the base relation schemas so that no insertion, deletion, or modification anomalies are present in the relation. 
+					(Insertion anomalies are those that occur when you attempt to insert a new record into a table, 
+					 deletion anomalies are those that occur when you attempt to delete a records from a table, 
+					 modification anomalies are those that occur when you attempt to update a record in a table.)
+					 If any of these anomalies are present, note them clearly and make sure that programs that update the database 
+					 will operate clearly. 
+	
+	+ Guideline 3: avoid placing attributes in a base relation whose values may frequently be NULL (as much as possible). If they are unavoidable, 
+					make sure that they apply only in exceptional cases and don't apply to a majority of the tuples in the relation.
+	
+	+ Guideline 4: design relation schemas so that they can be joined with equality conditions on attributes that are appropriately related 
+					(primary key, foreign key) pairs in such a way that guarantees that no spurious tuples (those that were not in a table after a 
+					 NATURAL JOIN operation and that represent spurious information that is not valid) are generated. Avoid relations that contain 
+					 matching attributes that are not (foreign key, primary key) pairs because joining on such attributes may produce spurious tuples.
+	
 b. Explain the terms functional dependency (for Monday, see Section 14.2) and multi-valued dependency (for Wednesday, see Section 14.6) by giving an example of each and showing how it satisfies the term’s formal definition.
 	
 	Functional dependency:
@@ -15,7 +35,10 @@ c. Review the formal definitions of these terms: superkey; key (see Section 14.3
 	Key:
 
 d. Explain BCNF (for Monday, see Section 14.5) and 4NF (for Wednesday, see Section 14.6) by giving an example relation and proving whether its schema conforms (or fails to conform) to the definitions of each normal form.
-
+	
+	+ BCNF:
+	
+	+ 4NF:
 
 e. Explain when one would one want to normalize a relational schema and when one might want to de-normalize one.
 

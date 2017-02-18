@@ -1,8 +1,12 @@
 Vision statement for CS-342 project
 -----------------------------------
 
-I was thinking of modeling a restaurant, where the database would store information about food and beverages and the relations between them.
-There would be appetizers, main dishes, and desserts as well as a variety of beverages (soda, alcholic beverages, shakes, smoothies, etc...).
-Potential stakeholders include customers who would like to see a menu of the different dishes that the restaurant offers, and management to determine
-stock quantities of ingriedents. The corresponding views would be different for the two sets of stakeholders, as one would be a menu and the other 
-would be an inventory list. 
+A potential idea would be to model information pertaining to car manufacturers. Information about cars and car parts would be stored. 
+Information about cars would include their body type (SUV, sedan, and so forth), make, model, year, engine type, and more. 
+Parts information would include what part of the car it is, and the information would vary depending on what part it is (engine, transmission, crank shaft, etc...). 
+I would also include the costs for each part and car, and there would be relations between certain parts and certain cars (for example, engine type. A specific make of a car may need a different engine type than another make). 
+I would also include the quantity for each part and car, to see how many are left in stock at the manufacturer.
+
+Potential stakeholders would be the management of the manufacturer to do inventory on stock and to check which car parts they need to buy (should they run out of some). 
+Car dealerships would also be potential stakeholders, as they could ask for a list of cars to buy so they could sell them at their location. 
+Mechanics could also be another set of stakeholders, as they could order parts from the manufacturer for their business. 
