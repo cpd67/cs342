@@ -16,7 +16,12 @@ drop table AltPerson;
 -- Informally, you have many attributes that should belong to different entities located inside
 -- of the same relation. The team attributes should belong to a separate team relation, not to the 
 -- AltPerson relation. 
---                                                   
+-- Formally:
+-- FDs:
+	-- personId -> name, status, mentorId, mentorName, mentorStatus.
+	-- {personId, name} -> name, status, mentorId, mentorName, mentorStatus, teamName, teamRole.
+	-- mentorId -> mentorName, mentorStatus.
+	-- teamName -> teamTime.                                  
 CREATE TABLE AltPerson (
 	personId integer,
 	name varchar(10),
