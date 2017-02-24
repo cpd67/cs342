@@ -30,7 +30,7 @@ create table Request (
 	dateSubmitted date PRIMARY KEY, 
 	text varchar(150),
 	accessCode char(1),
-	response varchar(150)
+	response varchar(150),
 	householdNumber integer,
 	-- In the event a HouseHold record is deleted, 
 	-- delete all requests from that HouseHold.
@@ -104,7 +104,7 @@ create table PersonTeam (
 
 INSERT INTO Household VALUES (0,'2347 Oxford Dr. SE','Grand Rapids','MI','49506','616-243-5680');
 -- New record
-INSERT INTO Household VALUES (1,'1234 Candy Cane Dr.','Gumdrop City','Candyland','11111','123-456-0000');
+INSERT INTO Household VALUES (1,'1234 Candy Cane Dr.','Gumdrop City','CL','11111','123-456-0000');
 
 INSERT INTO Homegroup VALUES (0, 'Bible Study #1', 'The Gospels');
 INSERT INTO Homegroup VALUES (1, 'Bible Study #2', 'Minor Prophets');
