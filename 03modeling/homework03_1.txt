@@ -1,1 +1,20 @@
+Homework 3 - Exercise 1
+
+a). A flight is the path a plane takes from an airport at scheduled times on a particular set of weekdays. A flight leg is the nonstop portion of a flight;
+	it is part of the path that a plane takes without stopping from an airport to a specified destination. A flight leg instance is a particular occurrence 
+	of a flight leg on a particular date. The same flight leg could occur on different dates, so an instance of the flight leg would be on one of those dates. 
+	The difference is as follows. A flight is made up of flight legs; the flight is the full distance from one destination to another on a specified date, 
+	while a flight leg is a portion of that distance from one destination to another. This may occur with layover flights, for example, where you 
+	have to fly from one location to the next before you can reach your actual destination. A flight leg instance is one of a particular leg of a flight 
+	on a certain date. The difference is thus in the distance each one takes and on what dates they occur. Flights have a much greater covered distance
+	than flight legs do, and flight leg instances are those of a particular flight leg but on different dates. 
+
+b). This notation marks a partial key for a weak entity. You need some way of identifying a weak entity, and so you would use a partial key to do so.
+	(A partial key is an attribute that can uniquely identify weak entities that are related to the same owner entity.) 
+	So, the underlined dotted line notation means that those attributes are the partial keys for the weak entities.
+
+c). I think they did this because a leg instance is a particular occurance of a leg on a particular date. A seat could be reserved by someone on 
+	the date of a particular leg instance, but that same seat could also be reserved by someone else on a different date of a particular leg instance. 
+	This is why all seats should participate in this relationship; the whole set of seats could be reserved by customers on different dates of different
+	flight leg instances, not just a select few of the seats. 
 
