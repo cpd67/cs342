@@ -15,13 +15,32 @@ drop table AltPerson;
 
 -- Informally, you have many attributes that should belong to different entities located inside
 -- of the same relation. The team attributes should belong to a separate team relation, not to the 
--- AltPerson relation. 
--- Formally:
+-- AltPerson relation. To add, there are many field values which could be NULL, which may cause spurious 
+-- tuples to appear when you attempt to do a natural join with this table. Also, there is a lot of redundant data
+-- in this relation; in order to say that Shamkant is in two different teams, you would need to add two records 
+-- with his information, which seems redundant as you are adding in his information multiple times when you should be
+-- doing that once to avoid redundancy.
+-- Formally, you will have to list out all of the superkeys of this relation and then determine the functional dependencies.
+-- Afterwards, you must see if the left-hand side has all of the superkeys. If it doesn't, then the relation fails to adhere to 
+-- the definition of BCNF.
+-- You will find that this relation doesn't adhere to that definition, as seen below:
+-- Superkeys:
+	-- personId
+	-- {personId, name}
+	-- mentorId
+	-- {mentorId, mentorName}
+	-- All of the fields of the relation is also considered a superkey ({personId, name, ...}).
 -- FDs:
-	-- personId -> name, status, mentorId, mentorName, mentorStatus.
-	-- {personId, name} -> name, status, mentorId, mentorName, mentorStatus, teamName, teamRole.
+	-- personId -> name, status, mentorId, mentorName, mentorStatus, teamName, teamRole, teamTime.
+	-- {personId, name} -> mentorId, mentorName, mentorStatus.
 	-- mentorId -> mentorName, mentorStatus.
-	-- teamName -> teamTime.                                  
+	-- teamName -> teamTime.
+-- We don't even have to list all of the functional dependencies in order to see that some of the superkeys do 
+-- not show up. In particular, {mentorId, mentorName}.
+-- Because of this, this relation is not in BCNF and is thus poorly designed.
+
+-- Exercise 4.1.b:
+-- A properly normalized schema for this database would be one that 
 CREATE TABLE AltPerson (
 	personId integer,
 	name varchar(10),
