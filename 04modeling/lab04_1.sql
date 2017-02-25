@@ -8,6 +8,7 @@
 -- CS 342
 -- Spring, 2017
 -- kvlinden
+-- Edited by Chris Dilley
 
 drop table AltPerson;
 
@@ -40,7 +41,12 @@ drop table AltPerson;
 -- Because of this, this relation is not in BCNF and is thus poorly designed.
 
 -- Exercise 4.1.b:
--- A properly normalized schema for this database would be one that 
+
+-- A properly normalized schema for this database would be one that separates the team attributes and simplifys the mentor attributes.
+-- So the schema would look something like this:
+-- AltPerson(ID, name, status, mentorID, teamID) (Where mentorID is a recursive foreign key to another AltPerson record).
+--						 (And teamID is a foreign key to a Team record that the AltPerson is on).
+-- Team(ID, teamName, teamRole, teamTime) 
 CREATE TABLE AltPerson (
 	personId integer,
 	name varchar(10),
@@ -58,5 +64,3 @@ INSERT INTO AltPerson VALUES (1, 'Shamkant', 'm', NULL, NULL, NULL, 'elders', 'c
 INSERT INTO AltPerson VALUES (1, 'Shamkant', 'm', NULL, NULL, NULL, 'executive', 'protem', 'Wednesday');
 INSERT INTO AltPerson VALUES (2, 'Jennifer', 'v', 3, 'Jeff', 'm', 'deacons', 'treasurer', 'Tuesday');
 INSERT INTO AltPerson VALUES (3, 'Jeff', 'm', NULL, NULL, NULL, 'deacons', 'chair', 'Tuesday');
-
-
