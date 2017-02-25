@@ -6,6 +6,10 @@
 --
 -- CS 342, Spring, 2017
 -- kvlinden
+-- Edited by Chris Dilley (cpd5)
+
+-- Exercise 4.2.a:
+
 
 DROP TABLE PersonTeam;
 DROP TABLE PersonVisit;
