@@ -64,7 +64,6 @@ FROM Performer, Casting
 WHERE id < 3 AND id = performerId
 ORDER BY fName;
  
-
 -- b. Use one or more of the set operations, e.g., UNION, EXCEPT, INTERSECT (Section 6.3.4).
 
 -- Make a list of movies that Harrison Ford was in, either where he was a star or an extra.
