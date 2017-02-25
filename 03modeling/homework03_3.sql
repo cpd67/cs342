@@ -1,22 +1,18 @@
 -- Homework 3: Exercise 9.11. 
 -- Chris Dilley (cpd5).
 
-drop table Part;
 drop table OrderPart;
+drop table Part;
 drop table Employee;
 drop table Orders;
 drop table Customer;
 
--- Employee table
-create table Employee (
-	empID integer PRIMARY KEY,
+-- Customer table	
+create table Customer (
+	custID integer PRIMARY KEY,
 	firstName varchar(30),
 	lastName varchar(30),
-	zipCode char(5),
-	orderTaken integer,
-	-- We don't have to delete the Employee record if an order record 
-	-- is deleted, so just set this foreign key to NULL.
-	FOREIGN KEY(orderTaken) REFERENCES Orders(orderID) ON DELETE SET NULL
+	zip char(5)
 	);
 
 -- Orders table	
@@ -31,20 +27,24 @@ create table Orders (
 	FOREIGN KEY(custID) REFERENCES Customer(custID) ON DELETE CASCADE
 	);
 	
+-- Employee table
+create table Employee (
+	empID integer PRIMARY KEY,
+	firstName varchar(30),
+	lastName varchar(30),
+	zipCode char(5),
+	orderTaken integer,
+	-- We don't have to delete the Employee record if an order record 
+	-- is deleted, so just set this foreign key to NULL.
+	FOREIGN KEY(orderTaken) REFERENCES Orders(orderID) ON DELETE SET NULL
+	);
+
 -- Part table
 create table Part (
 	partID integer PRIMARY KEY,
 	name varchar(30),
 	price float,
 	quantity integer
-	);
-
--- Customer table	
-create table Customer (
-	custID integer PRIMARY KEY,
-	firstName varchar(30),
-	lastName varchar(30),
-	zip char(5)
 	);
 
 -- This table keeps track of the quantity for each Part specified in an 
